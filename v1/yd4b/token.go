@@ -20,7 +20,6 @@ type TokenRequest struct {
 //
 // 引数:
 //   - endpoint: トークン取得APIのエンドポイントURL
-//   - myip: クライアントのグローバルIPアドレス（x-forwarded-for ヘッダに設定）
 //
 // 戻り値:
 //   - *http.Request: 生成されたHTTPリクエスト
@@ -46,9 +45,6 @@ type TokenResponse struct {
 }
 
 // GetToken はトークン取得APIを呼び出し、アクセストークンを取得します。
-//
-// 引数:
-//   - myip: クライアントのIPアドレス（x-forwarded-for ヘッダとして使用）
 //
 // 戻り値:
 //   - TokenResponse: トークン情報（スコープ、タイプ、有効秒数、トークン）

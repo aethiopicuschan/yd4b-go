@@ -17,6 +17,7 @@ go get -u github.com/aethiopicuschan/yd4b-go
 
 - Golang 1.24.2以降
 - [郵便番号・デジタルアドレス for Biz](https://guide-biz.da.pf.japanpost.jp/)のアカウント
+- APIのオリジン
 - クライアントIDとクライアントシークレット
 - 送信元IPアドレス
 
@@ -65,6 +66,16 @@ func main() {
 ## オプションについて
 
 `Searchcode` と `AddressZip` はFunctional Option Patternでオプションを設定できます。「With...」という関数がそれです。上記サンプルコードでも一部利用していますが、詳細は[ドキュメント](https://pkg.go.dev/github.com/aethiopicuschan/yd4b-go)を参照してください。
+
+## カスタムHTTPクライアント
+
+デフォルトではHTTPリクエストに `http.DefaultClient.Do` を使用していますが、必要に応じてカスタムHTTPクライアントを設定できます。以下の型の関数を受け付けます。
+
+```go
+func(req *http.Request) (*http.Response, error)
+```
+
+用意した関数を `yd4b.Client` の `SetDoFunc` に渡すことで、カスタムHTTPクライアントを設定できます。
 
 ## エラーハンドリング
 

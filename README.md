@@ -56,3 +56,18 @@ func main() {
 ## オプションについて
 
 `Searchcode` と `AddressZip` はFunctional Option Patternでオプションを設定できます。「With...」という関数がそれです。上記サンプルコードでも一部利用していますが、詳細は[ドキュメント](https://pkg.go.dev/github.com/aethiopicuschan/yd4b-go)を参照してください。
+
+## エラーハンドリング
+
+独自の `Error` 型を定義しています。これによって、以下のような実装が可能です。
+
+```go
+if err := someFn(); err != nil {
+	var yd4berr *yd4b.Error
+	if errors.As(err, &yd4berr) {
+		http.Error(w, yd4berr.Message, yd4berr.StatusCode)
+		return
+	}
+	http.Error(w, "internal server error", 500)
+}
+```

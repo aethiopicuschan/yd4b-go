@@ -140,14 +140,14 @@ func WithFlgGetPref(flag int) addressRequestOption {
 	})
 }
 
-// WithPage はページ番号を指定するオプションです。
+// WithPage はaddresszipにおいてページ番号を指定するオプションです。
 func WithAZPage(page int) addressRequestOption {
 	return addressRequestOptionFunc(func(r *addressRequest) {
 		r.Page = page
 	})
 }
 
-// WithLimit は取得件数の上限を指定するオプションです。
+// WithLimit はaddresszipにおいて取得件数の上限を指定するオプションです。
 func WithAZLimit(limit int) addressRequestOption {
 	return addressRequestOptionFunc(func(r *addressRequest) {
 		r.Limit = limit

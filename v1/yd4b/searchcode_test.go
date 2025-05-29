@@ -113,7 +113,7 @@ func TestClient_Searchcode(t *testing.T) {
 		},
 
 		{
-			name: "decoding error",
+			name: "decode error",
 			doFunc: func(req *http.Request) (*http.Response, error) {
 				return &http.Response{StatusCode: http.StatusOK, Body: io.NopCloser(bytes.NewBufferString(`{bad}`))}, nil
 			},

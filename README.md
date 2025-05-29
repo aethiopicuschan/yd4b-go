@@ -18,8 +18,11 @@ go get -u github.com/aethiopicuschan/yd4b-go
 - Golang 1.24.2以降
 - [郵便番号・デジタルアドレス for Biz](https://guide-biz.da.pf.japanpost.jp/)のアカウント
 - APIのオリジン
+  - APIリファレンスでダウンロードできるOpenAPI specificationに記載されています
 - クライアントIDとクライアントシークレット
+  - システムを新規登録した際に取得できます
 - 送信元IPアドレス
+  - 実際にAPIを利用する端末のグローバルIPアドレスを指定します
 
 詳しくは以下のサンプルコードを参照してください。
 

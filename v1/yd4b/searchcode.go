@@ -17,8 +17,8 @@ type searchcodeRequest struct {
 	Searchtype int    `json:"searchtype,omitempty"` // 検索方法タイプ（1:全対象、2:事業所郵便除外）
 }
 
-// SearchcodeOption は searchcodeRequest にオプションを適用するためのインターフェースです。
-type SearchcodeOption interface {
+// searchcodeOption は searchcodeRequest にオプションを適用するためのインターフェースです。
+type searchcodeOption interface {
 	apply(*searchcodeRequest)
 }
 
@@ -26,36 +26,36 @@ type searchcodeOptionFunc func(*searchcodeRequest)
 
 func (f searchcodeOptionFunc) apply(r *searchcodeRequest) { f(r) }
 
-// WithPage はページ番号を指定するオプションです。
-func WithSCPage(page int) SearchcodeOption {
+// WithSCPage はsearchcodeにおいてページ番号を指定するオプションです。
+func WithSCPage(page int) searchcodeOption {
 	return searchcodeOptionFunc(func(r *searchcodeRequest) {
 		r.Page = page
 	})
 }
 
-// WithLimit は取得最大件数を指定するオプションです。
-func WithSCLimit(limit int) SearchcodeOption {
+// WithLimit はsearchcodeにおいて取得最大件数を指定するオプションです。
+func WithSCLimit(limit int) searchcodeOption {
 	return searchcodeOptionFunc(func(r *searchcodeRequest) {
 		r.Limit = limit
 	})
 }
 
 // WithChoikitype は町域フィールドタイプを指定するオプションです（1:括弧なし、2:括弧あり）。
-func WithChoikitype(ct int) SearchcodeOption {
+func WithChoikitype(ct int) searchcodeOption {
 	return searchcodeOptionFunc(func(r *searchcodeRequest) {
 		r.Choikitype = ct
 	})
 }
 
 // WithSearchtype は検索方法タイプを指定するオプションです（1:全対象、2:事業所郵便除外）。
-func WithSearchtype(st int) SearchcodeOption {
+func WithSearchtype(st int) searchcodeOption {
 	return searchcodeOptionFunc(func(r *searchcodeRequest) {
 		r.Searchtype = st
 	})
 }
 
 // newSearchcodeRequest は必須の search_code とオプションから searchcodeRequest を生成します。
-func newSearchcodeRequest(code string, opts ...SearchcodeOption) *searchcodeRequest {
+func newSearchcodeRequest(code string, opts ...searchcodeOption) *searchcodeRequest {
 	r := &searchcodeRequest{SearchCode: code}
 	for _, opt := range opts {
 		opt.apply(r)
@@ -101,7 +101,7 @@ type SearchcodeAddressItem struct {
 // 引数:
 //   - code: 検索する郵便番号・事業所個別郵便番号・デジタルアドレス
 //   - opts: ページ番号や取得件数、フィールドタイプなどのオプション
-func (c *Client) Searchcode(code string, opts ...SearchcodeOption) (resp SearchcodeResponse, err error) {
+func (c *Client) Searchcode(code string, opts ...searchcodeOption) (resp SearchcodeResponse, err error) {
 	// リクエスト構築
 	reqDTO := newSearchcodeRequest(code, opts...)
 

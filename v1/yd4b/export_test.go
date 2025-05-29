@@ -24,6 +24,7 @@ var NewSearchcodeRequest = newSearchcodeRequest
 
 type AddressRequest = addressRequest
 type AddressRequestOption = addressRequestOption
+type SearchcodeOption = searchcodeOption
 
 func NewAddressRequest(opts ...addressRequestOption) addressRequest {
 	return newAddressRequest(opts...)

@@ -13,6 +13,15 @@
 go get -u github.com/aethiopicuschan/yd4b-go
 ```
 
+## 動作に必要なもの
+
+- Golang 1.24.2以降
+- [郵便番号・デジタルアドレス for Biz](https://guide-biz.da.pf.japanpost.jp/)のアカウント
+- クライアントIDとクライアントシークレット
+- 送信元IPアドレス
+
+詳しくは以下のサンプルコードを参照してください。
+
 ## 利用例
 
 ```go
@@ -40,7 +49,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Println(res.Addresses[0].PrefName, res2.Addresses[0].CityName, res2.Addresses[0].TownName)
+	log.Println(res2.Addresses[0].PrefName, res2.Addresses[0].CityName, res2.Addresses[0].TownName)
 	// Output: 東京都 千代田区 千代田
 
 	// 住所から郵便番号を検索
@@ -48,7 +57,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Println(res2.Addresses[0])
+	log.Println(res3.Addresses[0])
 	// Output: {1000001 13 東京都 トウキョウト TOKYO 13101 千代田区 チヨダク CHIYODA-KU 千代田 チヨダ CHIYODA}
 }
 ```

@@ -83,6 +83,7 @@ func TestClientMethods(t *testing.T) {
 			// Assert
 			assert.NoError(t, err)
 			assert.NotNil(t, resp)
+			assert.Equal(t, "v1", client.Version())
 
 			// Verify headers
 			assert.Equal(t, "application/json", req.Header.Get("Content-Type"), "Content-Type header")

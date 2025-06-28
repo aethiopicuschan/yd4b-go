@@ -4,6 +4,7 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/aethiopicuschan/yd4b-go.svg)](https://pkg.go.dev/github.com/aethiopicuschan/yd4b-go)
 [![Go Report Card](https://goreportcard.com/badge/github.com/aethiopicuschan/yd4b-go)](https://goreportcard.com/report/github.com/aethiopicuschan/yd4b-go)
 [![CI](https://github.com/aethiopicuschan/yd4b-go/actions/workflows/ci.yaml/badge.svg)](https://github.com/aethiopicuschan/yd4b-go/actions/workflows/ci.yaml)
+[![codecov](https://codecov.io/gh/aethiopicuschan/yd4b-go/graph/badge.svg?token=G03G3BLKGP)](https://codecov.io/gh/aethiopicuschan/yd4b-go)
 
 `yd4b-go`は[郵便番号・デジタルアドレス for Biz](https://guide-biz.da.pf.japanpost.jp/)のGolang向けクライアントライブラリです。
 

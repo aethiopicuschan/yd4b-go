@@ -85,6 +85,16 @@ func TestClient_AddressZip(t *testing.T) {
 			ecuid: "EC42",
 			opts: []yd4b.AddressRequestOption{
 				yd4b.WithPrefCode("13"),
+				yd4b.WithPrefName("東京都"),
+				yd4b.WithPrefKana("トウキョウト"),
+				yd4b.WithPrefRoma("TOKYO"),
+				yd4b.WithCityCode("13101"),
+				yd4b.WithCityName("千代田区"),
+				yd4b.WithCityKana("チヨダク"),
+				yd4b.WithCityRoma("CHIYODA-KU"),
+				yd4b.WithTownName("千代田"),
+				yd4b.WithTownKana("チヨダイダ"),
+				yd4b.WithTownRoma("CHIYODAI-DA"),
 				yd4b.WithFreeword("銀座"),
 				yd4b.WithFlgGetCity(1),
 				yd4b.WithFlgGetPref(1),
@@ -138,7 +148,6 @@ func TestClient_AddressZip(t *testing.T) {
 	}
 
 	for _, tc := range tests {
-		tc := tc
 		t.Run(tc.name, func(t *testing.T) {
 			t.Parallel()
 			client := yd4b.NewClient("https://api.example.com", "id", "secret", "1.2.3.4")
